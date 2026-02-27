@@ -6,10 +6,10 @@ const countEl = document.getElementById('count');       // Элемент для
 const searchInput = document.getElementById('search');  // Поле поиска
 const form = document.getElementById('book-form');      // Форма для добавления/редактирования
 
-// Глобальный массив для хранения книг (источник истины)
+// Глобальный массив для хранения книг 
 let books = [];
 
-// Функция для загрузки книг (как на рисунке 4.4)
+// Функция для загрузки книг 
 async function loadBooks() {
     try {
         // Пытаемся получить массив книг через generateBooks
@@ -23,7 +23,7 @@ async function loadBooks() {
     }
 }
 
-// Функция для отображения книг в таблице (как на странице 11)
+// Функция для отображения книг в таблице 
 function render() {
     // Очищаем содержимое тела таблицы
     tableBody.innerHTML = '';
@@ -65,7 +65,7 @@ function render() {
     countEl.textContent = filtered.length;
 }
 
-// Делегирование событий для таблицы (как на рисунке 4.6)
+// Делегирование событий для таблицы 
 tableBody.addEventListener('click', (e) => {
     // Находим строку, на которой произошел клик
     const row = e.target.closest('tr');
@@ -96,16 +96,16 @@ tableBody.addEventListener('click', (e) => {
     }
 });
 
-// Обработчик отправки формы (как на рисунке 4.7)
+// Обработчик отправки формы 
 form.addEventListener('submit', (e) => {
-    // Отменяем стандартную отправку формы (чтобы страница не перезагружалась)
+    // Отменяем стандартную отправку формы 
     e.preventDefault();
     
     // Собираем данные из формы
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
     
-    // Функция для нормализации данных (обрезает пробелы, преобразует числа)
+    // Функция для нормализации данных
     function normalizeBook(data) {
         return {
             title: data.title?.trim() || '',
@@ -143,7 +143,7 @@ form.addEventListener('submit', (e) => {
     render();
 });
 
-// Функция для заполнения формы данными книги (как на рисунке 4.8)
+// Функция для заполнения формы данными книги 
 function fillForm(book) {
     // Заполняем поля формы значениями из объекта книги
     form.elements['id'].value = book.id || '';
@@ -154,10 +154,10 @@ function fillForm(book) {
     form.elements['rating'].value = book.rating ?? '';
 }
 
-// Обработчик для поля поиска (как на рисунке 4.9)
+// Обработчик для поля поиска 
 searchInput.addEventListener('input', render);
 
-// Обработчик для кнопки экспорта в JSON (как на рисунке 4.9)
+// Обработчик для кнопки экспорта в JSON 
 document.getElementById('export').addEventListener('click', () => {
     // Преобразуем массив книг в JSON-строку
     const jsonString = JSON.stringify(books, null, 2);
@@ -175,9 +175,10 @@ document.getElementById('export').addEventListener('click', () => {
     URL.revokeObjectURL(url);
 });
 
-// Обработчик для кнопки обновления (как на рисунке 4.4)
+// Обработчик для кнопки обновления 
 document.getElementById('reload').addEventListener('click', loadBooks);
 
-// Загружаем книги при старте приложения (как на рисунке 4.9)
+// Загружаем книги при старте приложения 
 
 loadBooks();
+
