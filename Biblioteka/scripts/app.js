@@ -1,6 +1,6 @@
 import { generateBooks } from './scripts/bookGenerator.js';
 
-// Получаем ссылки на элементы DOM (как на странице 10)
+// Получаем ссылки на элементы DOM
 const tableBody = document.getElementById('table-body'); // Тело таблицы
 const countEl = document.getElementById('count');       // Элемент для отображения количества книг
 const searchInput = document.getElementById('search');  // Поле поиска
@@ -179,4 +179,5 @@ document.getElementById('export').addEventListener('click', () => {
 document.getElementById('reload').addEventListener('click', loadBooks);
 
 // Загружаем книги при старте приложения (как на рисунке 4.9)
+
 loadBooks();
